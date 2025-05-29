@@ -19,11 +19,14 @@ public class DepartmentsService {
 		dao = DepartmentsDAO.getInstance();
 
 		try {
-			conn.setAutoCommit(false);
+			conn.setAutoCommit(false);    //자동커밋해제
 			aList = dao.getListMethod(conn);
-
+			JdbcTemplate.commit(conn);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			JdbcTemplate.rollback(conn);
+		}finally {
+			JdbcTemplate.close(conn);
 		}
 
 		return aList;

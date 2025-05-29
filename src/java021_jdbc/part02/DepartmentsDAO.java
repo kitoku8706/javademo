@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import java021_jdbc.template.JdbcTemplate;
+
 //DAO : Date Access Object
 
 public class DepartmentsDAO {
@@ -42,6 +44,9 @@ public class DepartmentsDAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(stmt);
 		}
 		
 		return aList;
