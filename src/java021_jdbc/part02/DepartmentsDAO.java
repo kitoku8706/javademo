@@ -51,6 +51,35 @@ public class DepartmentsDAO {
 		
 		return aList;
 	}
+	public List<DepartmentsDTO> getSearchMethod(Connection conn, String search){
+		List<DepartmentsDTO> aList = new ArrayList<DepartmentsDTO>();
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		try {
+			stmt = conn.createStatement();
+			String sql = "SELECT * FROM departments WHERE department_name Like '%" + search + "%' ORDER BY department_id" ;
+			rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				DepartmentsDTO dto = new DepartmentsDTO();
+				dto.setDepartment_id(rs.getInt("department_id"));
+				dto.setDepartment_name(rs.getString("department_name"));
+				dto.setManager_id(rs.getInt("manager_id"));
+				dto.setLocatino_id(rs.getInt("location_id"));
+				aList.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			JdbcTemplate.close(rs);
+			JdbcTemplate.close(stmt);
+			
+		}
+		
+		
+		return aList;
+	}
 
 }
 

@@ -1,6 +1,7 @@
 package java021_jdbc.part02;
 
 import java.util.List;
+import java.util.Scanner;
 
 /*
 * MVC패턴
@@ -17,8 +18,16 @@ public class Java223_Jdbc {
 	public static void main(String[] args) {
 		DepartmentsController dController = new DepartmentsController();
 		List<DepartmentsDTO> aList = null;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("1 전체, 2 검색어 : ");
+		int input = Integer.parseInt(sc.nextLine());
+		if(input == 1) {
+			aList = dController.listProcess();
+		}else if(input==2) {
+			
+		}
 		
-		aList = dController.listProcess();
+		
 		display(aList);
 
 	}//end main()
