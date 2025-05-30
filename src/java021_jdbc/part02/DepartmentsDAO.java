@@ -1,6 +1,7 @@
 package java021_jdbc.part02;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -54,12 +55,19 @@ public class DepartmentsDAO {
 	public List<DepartmentsDTO> getSearchMethod(Connection conn, String search){
 		List<DepartmentsDTO> aList = new ArrayList<DepartmentsDTO>();
 		Statement stmt = null;
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			stmt = conn.createStatement();
-			String sql = "SELECT * FROM departments WHERE department_name Like '%" + search + "%' ORDER BY department_id" ;
-			rs = stmt.executeQuery(sql);
+//			stmt = conn.createStatement();
+//			String sql = "SELECT * FROM departments WHERE department_name Like '%" + search + "%' ORDER BY department_id" ;
+//			rs = stmt.executeQuery(sql);
+			
+			String sql = "SELECT * FROM departments WHERE department_name Like ? ORDER BY department_id";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, '%' + search + '%' );
+			rs = pstmt.executeQuery();
+			
 			while(rs.next()) {
 				DepartmentsDTO dto = new DepartmentsDTO();
 				dto.setDepartment_id(rs.getInt("department_id"));

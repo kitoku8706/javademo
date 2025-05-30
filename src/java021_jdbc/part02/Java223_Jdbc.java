@@ -24,6 +24,9 @@ public class Java223_Jdbc {
 		if(input == 1) {
 			aList = dController.listProcess();
 		}else if(input==2) {
+			System.out.println("부서명 입력 : ");
+			String search = sc.nextLine();
+			aList = dController.listSearchProcess(search);
 			
 		}
 		
