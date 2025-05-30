@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="C:/web_ai/utill/logback-classic-1.4.6.jar"/>
 	<classpathentry kind="lib" path="C:/web_ai/utill/logback-core-1.4.6.jar"/>
 	<classpathentry kind="lib" path="C:/web_ai/utill/slf4j-api-2.0.10.jar"/>
+	<classpathentry kind="lib" path="C:/web_ai/utill/eclipse-jee-2023-09-R-win32-x86_64/eclipse/lombok.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
