@@ -1,0 +1,2 @@
+2025-06-02 09:17:13,790 - java023_logging.part01.Test -message
+2025-06-02 09:17:13,793 - java023_logging.part01.Test -warnror message

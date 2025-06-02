@@ -19,6 +19,7 @@ public class DataMain {
 		
 		 MemDTO mem = new MemDTO(2,"여진구", 40, "서울");
 		 System.out.println(mem.toString());
+		 
 		
 	}
 

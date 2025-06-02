@@ -1,18 +1,19 @@
-package java024_lombok.part02;
+package java024_lombok.part03;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 //@Data
-@AllArgsConstructor       // 인자값이 있는 생성자
+@AllArgsConstructor
 @ToString
 @Getter
 @Setter
 
-@NoArgsConstructor      //인자값이 없는 메소드
+@NoArgsConstructor
 public class MemDTO {
 	private int num;
 	private String name;
