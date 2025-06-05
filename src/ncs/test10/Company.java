@@ -18,7 +18,7 @@ public class Company{
 					employees[i].getSalary());
 		}
 		
-		
+		System.out.println();
 		System.out.println("인센티브 100지급");
 		sc.incentive(100);
 		sa.incentive(100);

@@ -38,6 +38,9 @@ public class Book {
 	public double getDiscountRate() {
 		return discountRate;
 	}
+	public void setDiscountRate(double discountRate) {
+		this.discountRate = discountRate;
+	}
 
 	
 	

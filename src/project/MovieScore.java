@@ -1,6 +1,8 @@
 package project;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class MovieScore {
@@ -15,7 +17,7 @@ public class MovieScore {
 		// 반복문
 		while (run) {
 			System.out.println(" ----------------------------------------------------------- ");
-			System.out.println("| 1.영화조회 | 2.영화추가 | 3.영화삭제 | 4.평점입력 | 5.리뷰입력 | 6. 끝  |");
+			System.out.println("| 1.도서조회 | 2.도서추가 | 3.도서삭제 | 4.평점입력 | 5.리뷰입력 | 6. 끝  |");
 			System.out.println("|-----------------------------------------------------------|");
 			System.out.println("|********************** 번호를 입력해주세요 **********************|");
 			System.out.print("                             ");
@@ -40,7 +42,7 @@ public class MovieScore {
 			// 종료
 			case 6:
 				run = false;
-				System.out.println("|************************* 잘가요!! **************************|");
+				System.out.println("|************************* 다음에또봐요!! **************************|");
 				break;
 			// 재입력
 			default:
@@ -52,16 +54,16 @@ public class MovieScore {
 		}
 	} // end main()
 
-	// 1. 영화 조회
+	// 1. 도서 조회
 	private static void searchMovie() {
-		System.out.print("| 영화 제목 (전제 조회를 원하시면 Enter키를 누르세요) : ");
+		System.out.print("| 도서 제목 (전제 조회를 원하시면 Enter키를 누르세요) : ");
 		String movie = scanner.nextLine();
 		boolean noneResult = false;
 		for (int i = 0; i < movieList.size(); i++) {
 			Movie m = movieList.get(i);
 			if (m.getTitle().equals(movie)) {
 				noneResult = true;
-				System.out.println("| 제목 : " + m.getTitle() + " | 감독 : " + m.getProducer() + " | 개봉일 : "
+				System.out.println("| 제목 : " + m.getTitle() + " | 저자 : " + m.getProducer() + " | 출간일 : "
 						+ m.getOpenning() + " | 장르 : " + m.getGenre() + " | 총점 : " + m.totalScore(m.getTotal()) + " |");
 				System.out.println("| 리뷰 : " + m.getReview());
 				break;
@@ -69,42 +71,42 @@ public class MovieScore {
 		}
 		// 전체 조회
 		if (movie.matches("")) {
-			System.out.println("|***************** 영화 리스트 ******************|");
+			System.out.println("|***************** 도서 리스트 ******************|");
 			sortDisplay(movieList);
 			noneResult = true;
 			for (int i = 0; i < movieList.size(); i++) {
-				// Movie m = movieList.get(i);
-				System.out.printf("| %d. 제목 : %s , 감독 : %s \n", i + 1, movieList.get(i).getTitle(),
+				 Movie m = movieList.get(i);
+				System.out.printf("| %d. 제목 : %s , 저자 : %s \n", i + 1, movieList.get(i).getTitle(),
 						movieList.get(i).getProducer());
 			}
 //			int i =0;
 //			for(Movie m : movieList) {
-//				System.out.printf("| %d. 제목 : %s , 감독 : %s \n", ++i, m.getMovie(),
+//				System.out.printf("| %d. 제목 : %s , 저자 : %s \n", ++i, m.getMovie(),
 //						m.getProducer());
 //			}
 		}
-		// 등록되지 않은 영화 구문
+		// 등록되지 않은 도서 구문
 		if (!noneResult) {
-			System.out.println("|****************** 아직 등록되지 않은 영화입니다. ******************|");
+			System.out.println("|****************** 아직 등록되지 않은 도서입니다. ******************|");
 			System.out.println("|********************** 다시 검색해 주세요. *********************|");
 		}
 	} // end serachMovie()
 
-	// 영화 제목 오름차순 정렬
+	// 도서 제목 오름차순 정렬
 	public static void sortDisplay(ArrayList<Movie> mList) {
 		mList.sort(new Movie());
-		for (Movie m : mList)
-			m.getTitle();
+			for (Movie m : mList)
+				m.getTitle();
 	}
 
 
-	// 2. 영화 추가
+	// 2. 도서 추가
 	private static void addMovie() {
-		System.out.print("|영화 제목 : ");
+		System.out.print("|도서 제목 : ");
 		String title = scanner.nextLine();
-		System.out.print("|감독 : ");
+		System.out.print("|저자 : ");
 		String producer = scanner.nextLine();
-		System.out.print("|개봉일 : ");
+		System.out.print("|출간일 : ");
 		String openning = scanner.nextLine();
 		System.out.print("|장르 : ");
 		String genre = scanner.next();
@@ -115,12 +117,12 @@ public class MovieScore {
 		m.setGenre(genre);
 		m.setProducer(producer);
 		movieList.add(m);
-		System.out.println("|********************* 영화가 추가되었습니다. *********************|");
+		System.out.println("|********************* 도서가 추가되었습니다. *********************|");
 	} // end addMovie()
 
-	// 3. 영화 삭제
+	// 3. 도서 삭제
 	private static void deleteMovie() {
-		System.out.print("|영화 제목 : ");
+		System.out.print("|도서 제목 : ");
 		String movie = scanner.nextLine();
 		boolean noneResult = false;
 		for (int i = 0; i < movieList.size(); i++) {
@@ -128,7 +130,7 @@ public class MovieScore {
 			if (m.getTitle().equals(movie)) {
 				noneResult = true;
 				movieList.remove(i);
-				System.out.println("|********************* 영화가 삭제되었습니다. *********************|");
+				System.out.println("|********************* 도서가 삭제되었습니다. *********************|");
 				break;
 			}
 		}
@@ -140,7 +142,7 @@ public class MovieScore {
 	// 4. 평점 입력
 	private static void reviewNum() {
 		System.out.println("|************* 평점은 최소 0.0점부터 최대 10.0점입니다. **************|");
-		System.out.print("|영화 제목 : ");
+		System.out.print("|도서 제목 : ");
 		String movie = scanner.nextLine();
 		boolean noneResult = false;
 		for (int i = 0; i < movieList.size(); i++) {
@@ -170,7 +172,7 @@ public class MovieScore {
 
 	// 5. 리뷰 입력
 	private static void review() {
-		System.out.print("|영화 제목 : ");
+		System.out.print("|도서 제목 : ");
 		String movie = scanner.nextLine();
 		boolean noneResult = false;
 		for (int i = 0; i < movieList.size(); i++) {

@@ -3,15 +3,15 @@ package project;
 import java.util.Comparator;
 
 public class Movie implements Comparator<Movie> {
-	private String title; // 영화 제목
+	private String title; // 도서 제목
 	private double metacritic; // 메타크리틱 점수
 	private double rottentomato; // 로튼토마토 점수
 	private double naver; // 네이버 점수
 	private double daum; // 다음 점수
 	private double total; // 리뷰 총 점수
 	private String review; // 리뷰
-	private String producer; // 감독
-	private String openning; // 개봉일
+	private String producer; // 저자
+	private String openning; // 출간일
 	private String genre; // 장르
 
 	public String totalScore(double total) {

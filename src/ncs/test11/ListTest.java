@@ -1,6 +1,9 @@
 package ncs.test11;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 public class ListTest {
 
@@ -15,8 +18,8 @@ public class ListTest {
 		System.out.print("정렬 전 :");
 		display(list);
 		
-		list.sort(new Decending());
-//		Collections.sort(list, new Decending());
+//		list.sort(new Decending());
+		Collections.sort(list, new Decending());
 		System.out.print("정렬 후 : ");
 		display(list);
 	}
